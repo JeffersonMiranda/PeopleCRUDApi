@@ -1,1 +1,1 @@
-web: gunicorn 127.0.0.1 --log-file -
+web: python manage.py runserver 0.0.0.0:$PORT
