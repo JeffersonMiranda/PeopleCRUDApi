@@ -1,1 +1,1 @@
-web: gunicorn manage:app --log-file -
+web: gunicorn 127.0.0.1 --log-file -
