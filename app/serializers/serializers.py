@@ -10,7 +10,6 @@ class PersonSerializer(serializers.ModelSerializer):
         model = Person
         fields = '__all__'
 
-
 class AddressSerializer(serializers.ModelSerializer):
     
     class Meta:

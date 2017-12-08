@@ -6,7 +6,7 @@ from datetime import datetime
 from rest_framework.routers import DefaultRouter
 from django.conf.urls import url
 import django.contrib.auth.views
-import app.views
+from app import views
 
 # Uncomment the next lines to enable the admin:
 # from django.conf.urls import include
