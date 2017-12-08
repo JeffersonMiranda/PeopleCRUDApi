@@ -20,8 +20,8 @@ router.register(r'emails',views.EmailView)
 router.register(r'addresses',views.AddressView)
 router.register(r'phoneNumbers',views.PhoneNumberView)
 
-urlpatterns = [
-   
+urlpatterns = [    
+    url(r'^', include(router.urls)),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
