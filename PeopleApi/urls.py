@@ -3,10 +3,9 @@ Definition of urls for PeopleApi.
 """
 
 from datetime import datetime
+from rest_framework.routers import DefaultRouter
 from django.conf.urls import url
 import django.contrib.auth.views
-
-import app.forms
 import app.views
 
 # Uncomment the next lines to enable the admin:
@@ -14,30 +13,15 @@ import app.views
 # from django.contrib import admin
 # admin.autodiscover()
 
-urlpatterns = [
-    # Examples:
-    url(r'^$', app.views.home, name='home'),
-    url(r'^contact$', app.views.contact, name='contact'),
-    url(r'^about', app.views.about, name='about'),
-    url(r'^login/$',
-        django.contrib.auth.views.login,
-        {
-            'template_name': 'app/login.html',
-            'authentication_form': app.forms.BootstrapAuthenticationForm,
-            'extra_context':
-            {
-                'title': 'Log in',
-                'year': datetime.now().year,
-            }
-        },
-        name='login'),
-    url(r'^logout$',
-        django.contrib.auth.views.logout,
-        {
-            'next_page': '/',
-        },
-        name='logout'),
+router = DefaultRouter()
 
+router.register(r'persons',views.PersonView)
+router.register(r'emails',views.EmailView)
+router.register(r'addresses',views.AddressView)
+router.register(r'phoneNumbers',views.PhoneNumberView)
+
+urlpatterns = [
+   
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
