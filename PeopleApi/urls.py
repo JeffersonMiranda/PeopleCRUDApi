@@ -3,6 +3,7 @@ Definition of urls for PeopleApi.
 """
 
 from datetime import datetime
+from django.conf.urls import include
 from rest_framework.routers import DefaultRouter
 from django.conf.urls import url
 import django.contrib.auth.views

@@ -12,6 +12,7 @@ class PersonView(viewsets.ModelViewSet):
     queryset = Person.objects.all()
     serializer_class = serializers.PersonSerializer
 
+
 class AddressView(viewsets.ModelViewSet):
 
     queryset = Address.objects.all()
