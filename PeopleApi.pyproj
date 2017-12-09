@@ -32,16 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app\forms.py" />
-    <Compile Include="app\models\Address\Address.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="app\models\Address\City.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="app\models\Address\State.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="app\models\Address\__init__.py">
+    <Compile Include="app\models\Address.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="app\models\Email.py">
@@ -73,7 +64,6 @@
     <Folder Include="app\" />
     <Folder Include="app\migrations\" />
     <Folder Include="app\models\" />
-    <Folder Include="app\models\Address\" />
     <Folder Include="app\serializers\" />
     <Folder Include="app\static\" />
     <Folder Include="app\static\app\" />

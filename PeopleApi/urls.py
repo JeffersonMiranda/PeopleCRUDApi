@@ -6,7 +6,6 @@ from datetime import datetime
 from django.conf.urls import include
 from rest_framework.routers import DefaultRouter
 from django.conf.urls import url
-import django.contrib.auth.views
 from app import views
 
 # Uncomment the next lines to enable the admin:
@@ -20,8 +19,6 @@ router.register(r'persons',views.PersonView)
 router.register(r'emails',views.EmailView)
 router.register(r'addresses',views.AddressView)
 router.register(r'phoneNumbers',views.PhoneNumberView)
-router.register(r'states',views.StateView)
-router.register(r'cities',views.CityView)
 
 urlpatterns = [    
     url(r'^', include(router.urls)),

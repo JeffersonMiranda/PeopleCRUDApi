@@ -3,7 +3,7 @@ from app.models.Person import Person
 
 class PhoneNumber(models.Model):
     
-    person = models.ForeignKey(Person, on_delete = models.CASCADE, null = True, blank = True)
+    person = models.ForeignKey(Person, on_delete = models.CASCADE)
     number = models.CharField(max_length = 50)
 
 
