@@ -20,6 +20,8 @@ router.register(r'persons',views.PersonView)
 router.register(r'emails',views.EmailView)
 router.register(r'addresses',views.AddressView)
 router.register(r'phoneNumbers',views.PhoneNumberView)
+router.register(r'states',views.StateView)
+router.register(r'cities',views.CityView)
 
 urlpatterns = [    
     url(r'^', include(router.urls)),

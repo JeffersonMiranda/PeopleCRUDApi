@@ -7539,3 +7539,7 @@ C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\Extens
 2017-12-07T23:31:41: Deleting 2 files
 2017-12-07T23:31:41: Deleting "C:\Users\miran\Documents\Visual Studio 2017\Projects\ServiceFusionTest\PeopleApi\env\.ptvs\_dummy_threading.idb"
 2017-12-07T23:31:41: Deleting "C:\Users\miran\Documents\Visual Studio 2017\Projects\ServiceFusionTest\PeopleApi\env\.ptvs\_dummy__threading_local.idb"
+
+2017-12-08T00:29:44: Start analysis
+2017-12-08T00:29:48: IncludeModulesFromModulePath = win32com
+2017-12-08T00:29:56: Deleting 40 files
