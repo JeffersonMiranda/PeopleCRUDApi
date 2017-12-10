@@ -6,7 +6,7 @@ from app.models.Person import Person
 
 class PersonSerializer(serializers.ModelSerializer):
     
-    birthday = serializers.DateField(format = 'MM/dd/yyyy')
+    birthday = serializers.DateField(format = '%m/%d/%Y')
 
     class Meta:
         model = Person
