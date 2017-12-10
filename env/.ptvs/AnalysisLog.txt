@@ -7551,3 +7551,28 @@ C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\Extens
 2017-12-10T09:12:31: Start analysis
 2017-12-10T09:12:31: IncludeModulesFromModulePath = win32com
 2017-12-10T09:12:36: Deleting 0 files
+
+2017-12-10T09:55:45: Start analysis
+2017-12-10T09:55:45: IncludeModulesFromModulePath = win32com
+2017-12-10T09:55:49: Including c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env\lib\site-packages\corsheaders because corsheaders.checks needs updating
+2017-12-10T09:55:50: Deleting 0 files
+2017-12-10T09:55:50: astropy.CallDepth = 0
+2017-12-10T09:55:50: delphixpy.CallDepth = 0
+2017-12-10T09:55:50: matplotlib.CallDepth = 3
+2017-12-10T09:55:50: pandas.CallDepth = 0
+2017-12-10T09:55:50: sympy.CallDepth = 0
+2017-12-10T09:55:50: Start group "c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env\lib\site-packages\corsheaders" with 8 files
+2017-12-10T09:55:50: Parsing complete
+2017-12-10T09:55:50: Analyzing "corsheaders.checks" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env\lib\site-packages\corsheaders\checks.py")
+2017-12-10T09:55:50: Analyzing "corsheaders.compat" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env\lib\site-packages\corsheaders\compat.py")
+2017-12-10T09:55:50: Analyzing "corsheaders.conf" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env\lib\site-packages\corsheaders\conf.py")
+2017-12-10T09:55:50: Analyzing "corsheaders.defaults" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env\lib\site-packages\corsheaders\defaults.py")
+2017-12-10T09:55:50: Analyzing "corsheaders.middleware" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env\lib\site-packages\corsheaders\middleware.py")
+2017-12-10T09:55:50: Analyzing "corsheaders.models" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env\lib\site-packages\corsheaders\models.py")
+2017-12-10T09:55:50: Analyzing "corsheaders.signals" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env\lib\site-packages\corsheaders\signals.py")
+2017-12-10T09:55:50: Analyzing "corsheaders" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env\lib\site-packages\corsheaders\__init__.py")
+2017-12-10T09:55:50: Starting analysis of 8 modules
+2017-12-10T09:56:05: Analysis complete
+2017-12-10T09:56:05: Saving group "c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env\lib\site-packages\corsheaders"
+2017-12-10T09:56:06: End of group "c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env\lib\site-packages\corsheaders"
+2017-12-10T09:56:10: Deleting 0 files
