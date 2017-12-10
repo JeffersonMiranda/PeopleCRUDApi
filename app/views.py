@@ -12,6 +12,47 @@ class PersonView(viewsets.ModelViewSet):
     queryset = Person.objects.all()
     serializer_class = serializers.PersonSerializer
 
+    def create(self,request,*args,**kwargs):
+        dataPerson = request.data
+        dataAddress = request.data['address']
+        dataEmail = request.data['email']
+        dataPhoneNumber = request.data['phoneNumber']
+
+        serializerPerson = serializers.PersonSerializer(data=DataPerson)        
+        serializerPerson.is_valid(raise_exception=True) # VALIDANDO O SERIALIZER
+
+        try:
+            with transaction.atomic():
+                self.perform_create(serializerPerson)
+                
+                for address in dataAddress:
+                    address['person'] = serializerPerson.data['id']
+
+                serializerAddress = serializers.AddressSerializer(data = DataAddress)
+                serializerAddress.is_valid(raise_exception=True) 
+                Address = AddressView()
+                Address.perform_create(serializerAddress)
+                
+                for email in dataEmail:
+                    email['person'] = serializerPerson.data['id']
+
+                serializerEmail = serializers.EmailSerializer(data = dataEmail)
+                serializerEmail.is_valid(raise_exception = True)
+                Email = EmailView()
+                Email.perform_create(serializerEmail)
+
+                for phoneNumber in dataPhoneNumber:
+                    phoneNumber['person'] = serializerPerson.data['id']
+    
+                serializerPhoneNumber = serializers.PhoneNumberSerializer(data = dataPhoneNumber)
+                serializerPhoneNumber.is_valid(raise_exception = True)
+                PhoneNumber = PhoneNumberView()
+                PhoneNumber.perform_create(serializerPhoneNumber)
+                
+        except IntegrityError:
+             handle_exception()
+                
+    
 class AddressView(viewsets.ModelViewSet):
 
     queryset = Address.objects.all()
