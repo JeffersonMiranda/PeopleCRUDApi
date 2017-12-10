@@ -29,7 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['fast-escarpment-66590.herokuapp.com','localhost']
 
 CORS_ORIGIN_WHITELIST  = (
-    'localhost:8080'
+    'http://localhost:8080'
     )
 
 # Application definition
