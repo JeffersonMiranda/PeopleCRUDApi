@@ -13,7 +13,7 @@ class PersonView(viewsets.ModelViewSet):
     serializer_class = serializers.PersonSerializer
 
     def create(self,request,*args,**kwargs):
-        dataPerson = request.data
+        dataPerson = request.data['data']
         dataAddress = request.data['address']
         dataEmail = request.data['email']
         dataPhoneNumber = request.data['phoneNumber']
