@@ -28,7 +28,7 @@ class PersonView(viewsets.ModelViewSet):
                 for address in dataAddress:
                     address['person'] = serializerPerson.data['id']
 
-                serializerAddress = serializers.AddressSerializer(data = dataAddress,many=True)
+                serializerAddress = serializers.AddressSerializer(data = dataAddress,many = isinstance(dataAddress,list))
                 serializerAddress.is_valid(raise_exception=True) 
                 Address = AddressView()
                 Address.perform_create(serializerAddress)
@@ -36,7 +36,7 @@ class PersonView(viewsets.ModelViewSet):
                 for email in dataEmail:
                     email['person'] = serializerPerson.data['id']
 
-                serializerEmail = serializers.EmailSerializer(data = dataEmail,many=True)
+                serializerEmail = serializers.EmailSerializer(data = dataEmail,many=isinstance(dataEmail,list))
                 serializerEmail.is_valid(raise_exception = True)
                 Email = EmailView()
                 Email.perform_create(serializerEmail)
@@ -44,7 +44,7 @@ class PersonView(viewsets.ModelViewSet):
                 for phoneNumber in dataPhoneNumber:
                     phoneNumber['person'] = serializerPerson.data['id']
     
-                serializerPhoneNumber = serializers.PhoneNumberSerializer(data = dataPhoneNumber,many=True)
+                serializerPhoneNumber = serializers.PhoneNumberSerializer(data = dataPhoneNumber,many=isinstance(dataPhoneNumber,list))
                 serializerPhoneNumber.is_valid(raise_exception = True)
                 PhoneNumber = PhoneNumberView()
                 PhoneNumber.perform_create(serializerPhoneNumber)
