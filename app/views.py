@@ -27,8 +27,8 @@ class PersonView(viewsets.ModelViewSet):
             with transaction.atomic():
                 self.perform_create(serializerPerson)
                 
-                for address in dataAddress:
-                    address['person_id'] = serializerPerson.data['id']
+                for item in dataAddress:
+                    item['person'] = serializerPerson.data['id']
 
                 serializerAddress = serializers.AddressSerializer(data = dataAddress,many = isinstance(dataAddress,list))
                 serializerAddress.is_valid(raise_exception=True) 
