@@ -28,8 +28,8 @@ class EmailSerializer(serializers.ModelSerializer):
 class PersonSerializer(serializers.ModelSerializer):
     
     addresses = AddressSerializer(many=True)
-    phoneNumbers = PhoneNumberSerializer(many=True, read_only = True)
-    emails = EmailSerializer(many = True, read_only = True)
+    phoneNumbers = PhoneNumberSerializer(many=True, required=False)
+    emails = EmailSerializer(many = True, required=False)
 
     class Meta:
         model = Person
@@ -37,6 +37,7 @@ class PersonSerializer(serializers.ModelSerializer):
 
 
     def create(self, validated_data):
+        addresses_data = validated_data.pop('addresses')
         phoneNumbers_data = validated_data.pop('phoneNumbers')
         emails_data = validated_data.pop('emails')
 
