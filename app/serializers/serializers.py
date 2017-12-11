@@ -28,8 +28,8 @@ class EmailSerializer(serializers.ModelSerializer):
 class PersonSerializer(serializers.ModelSerializer):
     
     addresses = AddressSerializer(many=True)
-    phoneNumbers = PhoneNumberSerializer(many=True, required=False)
-    emails = EmailSerializer(many = True, required=False)
+    phoneNumbers = PhoneNumberSerializer(many=True)
+    emails = EmailSerializer(many = True)
 
     class Meta:
         model = Person
