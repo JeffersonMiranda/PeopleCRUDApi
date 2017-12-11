@@ -36,7 +36,7 @@ class PersonSerializer(serializers.ModelSerializer):
         fields = ('firstName','lastName','birthday','addresses','phoneNumbers','emails')
 
 
-    def create(self, validated_data):
+    def create(self, **validated_data):
         addresses_data = validated_data.pop('addresses')
         phoneNumbers_data = validated_data.pop('phoneNumbers')
         emails_data = validated_data.pop('emails')
