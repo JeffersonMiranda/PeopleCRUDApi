@@ -7,6 +7,8 @@ from app.models.Person import Person
 
 class AddressSerializer(serializers.ModelSerializer):
     
+    person = serializers.PrimaryKeyRelatedField()
+
     class Meta:
         model = Address
         fields = '__all__'
@@ -18,6 +20,7 @@ class PhoneNumberSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class EmailSerializer(serializers.ModelSerializer):
+    
 
     class Meta:
         model = Email
@@ -32,3 +35,5 @@ class PersonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Person
         fields = ('firstName','lastName','birthday','addresses','phoneNumbers','emails')
+
+    def create(self):
