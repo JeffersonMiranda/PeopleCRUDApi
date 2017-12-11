@@ -35,8 +35,8 @@ class PersonSerializer(serializers.ModelSerializer):
         model = Person
         fields = ('firstName','lastName','birthday','addresses','phoneNumbers','emails')
         extra_kwargs = {
-            'phoneNumbers_person_id': {'required': False},
-            'emails_person_id': {'required': False}
+            'phoneNumbers_person': {'required': False},
+            'emails_person': {'required': False}
         }
 
     def create(self, validated_data):
