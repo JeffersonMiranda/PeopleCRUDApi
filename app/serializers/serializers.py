@@ -34,6 +34,10 @@ class PersonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Person
         fields = ('firstName','lastName','birthday','addresses','phoneNumbers','emails')
+        extra_kwargs = {
+            'phoneNumbers_person_id': {'required': False},
+            'emails_person_id': {'required': False}
+        }
 
     def create(self, validated_data):
         addresses_data = validated_data.pop('addresses')
