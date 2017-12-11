@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db.utils import IntegrityError
 from app.models.Address import Address
 from app.models.Email import Email
 from app.serializers import serializers
