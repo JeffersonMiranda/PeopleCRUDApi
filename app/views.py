@@ -55,7 +55,7 @@ class PersonView(viewsets.ModelViewSet):
         except IntegrityError:
              handle_exception()
         
-        headers = self.get_success_headers(serializer.data)
+        headers = self.get_success_headers(serializerPerson.data)
 
         return Response({"Person":serializerPerson.data,"Addresses":serializerAddress.data,"Emails":serializerEmail.data,"Phone Numbers":serializerPhoneNumber.data},status = status.HTTP_201_CREATED, headers = headers)
     
