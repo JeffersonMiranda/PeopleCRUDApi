@@ -28,7 +28,7 @@ class PersonView(viewsets.ModelViewSet):
                 self.perform_create(serializerPerson)
                 
                 for address in dataAddress:
-                    address['person'] = serializerPerson.data['id']
+                    address['person'] = 1
 
                 serializerAddress = serializers.AddressSerializer(data = dataAddress,many = isinstance(dataAddress,list))
                 serializerAddress.is_valid(raise_exception=True) 
