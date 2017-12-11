@@ -28,16 +28,13 @@ class EmailSerializer(serializers.ModelSerializer):
 class PersonSerializer(serializers.ModelSerializer):
     
     addresses = AddressSerializer(many=True)
-    phoneNumbers = PhoneNumberSerializer(many=True)
-    emails = EmailSerializer(many = True)
+    phoneNumbers = PhoneNumberSerializer(many=True, read_only = True)
+    emails = EmailSerializer(many = True, read_only = True)
 
     class Meta:
         model = Person
         fields = ('firstName','lastName','birthday','addresses','phoneNumbers','emails')
-        extra_kwargs = {
-            'phoneNumbers_person': {'required': False},
-            'emails_person': {'required': False}
-        }
+
 
     def create(self, validated_data):
         addresses_data = validated_data.pop('addresses')
