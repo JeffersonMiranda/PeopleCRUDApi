@@ -37,7 +37,7 @@ class PersonSerializer(serializers.ModelSerializer):
 
 
     def create(self, validated_data):
-        addresses_data = validated_data.pop('addresses')
+        phoneNumbers_data = validated_data.pop('phoneNumbers')
         emails_data = validated_data.pop('emails')
 
         newPerson = Person.objects.create(**validated_data)
