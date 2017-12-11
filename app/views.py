@@ -16,49 +16,7 @@ class PersonView(viewsets.ModelViewSet):
     queryset = Person.objects.all()
     serializer_class = serializers.PersonSerializer
 
-    def create(self,request,*args,**kwargs):
-        dataPerson = request.data['data']
-        dataAddress = request.data['address']
-        dataEmail = request.data['email']
-        dataPhoneNumber = request.data['phoneNumber']
-
-        serializerPerson = serializers.PersonSerializer(data=dataPerson)        
-        serializerPerson.is_valid(raise_exception=True) # VALIDANDO O SERIALIZER
-
-        try:
-            with transaction.atomic():
-                self.perform_create(serializerPerson)
-                
-                for address in dataAddress:
-                    address['person'] = serializerPerson.data['id']
-
-                serializerAddress = serializers.AddressSerializer(data = dataAddress,many = isinstance(dataAddress,list))
-                serializerAddress.is_valid(raise_exception=True) 
-                Address = AddressView()
-                Address.perform_create(serializerAddress)
-                
-                for email in dataEmail:
-                    email['person'] = serializerPerson.data['id']
-
-                serializerEmail = serializers.EmailSerializer(data = dataEmail,many=isinstance(dataEmail,list))
-                serializerEmail.is_valid(raise_exception = True)
-                Email = EmailView()
-                Email.perform_create(serializerEmail)
-
-                for phoneNumber in dataPhoneNumber:
-                    phoneNumber['person'] = serializerPerson.data['id']
     
-                serializerPhoneNumber = serializers.PhoneNumberSerializer(data = dataPhoneNumber,many=isinstance(dataPhoneNumber,list))
-                serializerPhoneNumber.is_valid(raise_exception = True)
-                PhoneNumber = PhoneNumberView()
-                PhoneNumber.perform_create(serializerPhoneNumber)
-                
-        except IntegrityError:
-             handle_exception()
-        
-        headers = self.get_success_headers(serializerPerson.data)
-
-        return Response({"Person":serializerPerson.data,"Addresses":serializerAddress.data,"Emails":serializerEmail.data,"Phone Numbers":serializerPhoneNumber.data},status = status.HTTP_201_CREATED, headers = headers)
     
 class AddressView(viewsets.ModelViewSet):
 
