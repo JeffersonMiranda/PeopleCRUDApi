@@ -32,3 +32,11 @@ class PersonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Person
         fields = ('firstName','lastName','birthday','addresses')
+
+    def create(self, validated_data):
+        addresses_data = validated_data.pop('addresses')
+        newPerson = Person.objects.create(**validated_data)
+        for address_data in addresses_data:
+            Address.objects.create(person = newPerson, **address_data)
+        return newPerson    
+
