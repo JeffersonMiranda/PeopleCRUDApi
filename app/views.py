@@ -18,7 +18,7 @@ class PersonView(viewsets.ModelViewSet):
         dataEmail = request.data['email']
         dataPhoneNumber = request.data['phoneNumber']
 
-        serializerPerson = serializers.PersonSerializer(data=dataPerson, many=True)        
+        serializerPerson = serializers.PersonSerializer(data=dataPerson)        
         serializerPerson.is_valid(raise_exception=True) # VALIDANDO O SERIALIZER
 
         try:
