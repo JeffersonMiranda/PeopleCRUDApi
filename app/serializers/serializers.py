@@ -4,11 +4,6 @@ from app.models.Email import Email
 from app.models.PhoneNumber import PhoneNumber
 from app.models.Person import Person
 
-class PersonSerializer(serializers.ModelSerializer):
-    
-    class Meta:
-        model = Person
-        fields = '__all__'
 
 class AddressSerializer(serializers.ModelSerializer):
     
@@ -27,3 +22,13 @@ class EmailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Email
         fields = '__all__'
+
+class PersonSerializer(serializers.ModelSerializer):
+    
+    addresses = AddressSerializer(many=True)
+    phoneNumbers = PhoneNumberSerializer(many=True)
+    emails = EmailSerializer(many = True)
+
+    class Meta:
+        model = Person
+        fields = ('firstName','lastName','birthday','addresses','phoneNumbers','emails')

@@ -7576,3 +7576,7 @@ C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\Extens
 2017-12-10T09:56:05: Saving group "c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env\lib\site-packages\corsheaders"
 2017-12-10T09:56:06: End of group "c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env\lib\site-packages\corsheaders"
 2017-12-10T09:56:10: Deleting 0 files
+
+2017-12-11T01:28:25: Start analysis
+2017-12-11T01:28:26: IncludeModulesFromModulePath = win32com
+2017-12-11T01:28:33: Deleting 0 files

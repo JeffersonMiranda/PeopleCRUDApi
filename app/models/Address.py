@@ -3,7 +3,7 @@ from app.models.Person import Person
 
 class Address(models.Model):
     
-    person = models.ForeignKey(Person, on_delete = models.CASCADE, null = True, blank = True)
+    person = models.ForeignKey(Person, on_delete = models.CASCADE, null = True, blank = True, related_name = 'addresses')
     street = models.CharField(max_length = 50)
     postalCode = models.CharField(max_length = 50)
     city = models.CharField(max_length = 50)
