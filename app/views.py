@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from rest_framework.response import Response
 from django.db import transaction
 from django.db.utils import IntegrityError
 from app.models.Address import Address
@@ -28,7 +29,7 @@ class PersonView(viewsets.ModelViewSet):
                 self.perform_create(serializerPerson)
                 
                 for address in dataAddress:
-                    address['street'] = serializerPerson.data['id']
+                    address['person'] = serializerPerson.data['id']
 
                 serializerAddress = serializers.AddressSerializer(data = dataAddress,many = isinstance(dataAddress,list))
                 serializerAddress.is_valid(raise_exception=True) 
@@ -53,7 +54,10 @@ class PersonView(viewsets.ModelViewSet):
                 
         except IntegrityError:
              handle_exception()
-                
+        
+        headers = self.get_success_headers(serializer.data)
+
+        return Response({"Person":serializerPerson.data,"Addresses":serializerAddress.data,"Emails":serializerEmail.data,"Phone Numbers":serializerPhoneNumber.data},status = status.HTTP_201_CREATED, headers = headers)
     
 class AddressView(viewsets.ModelViewSet):
 
