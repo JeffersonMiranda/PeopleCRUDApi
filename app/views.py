@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.db.transaction import atomic
+from django.db import transaction
 from django.db.utils import IntegrityError
 from app.models.Address import Address
 from app.models.Email import Email
