@@ -26,13 +26,10 @@ class EmailSerializer(serializers.ModelSerializer):
 
 
 class PersonSerializer(serializers.ModelSerializer):
-    
-    addresses = AddressSerializer(many=True)
-    phoneNumbers = PhoneNumberSerializer(many=True)
-    emails = EmailSerializer(many = True)
+  
 
     class Meta:
         model = Person
-        fields = ('firstName','lastName','birthday','addresses','phoneNumbers','emails')
+        fields = '__all__'
 
 
