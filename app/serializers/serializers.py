@@ -19,14 +19,11 @@ class PhoneNumberSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class EmailSerializer(serializers.ModelSerializer):
-    
-
+        
     class Meta:
         model = Email
         fields = '__all__'
 
-    def create(self, validated_data):
-        pass
 
 class PersonSerializer(serializers.ModelSerializer):
     
@@ -38,22 +35,4 @@ class PersonSerializer(serializers.ModelSerializer):
         model = Person
         fields = ('firstName','lastName','birthday','addresses','phoneNumbers','emails')
 
-
-    def create(self, validated_data): ## CREATING PERSONS WITH ADDRESSES, PHONE NUMBERS AND EMAILS 
-        addresses_data = validated_data.pop('addresses')
-        phoneNumbers_data = validated_data.pop('phoneNumbers')
-        emails_data = validated_data.pop('emails')
-
-        newPerson = Person.objects.create(**validated_data)
-        
-        for address_data in addresses_data:
-            Address.objects.create(person = newPerson, **address_data)
-        
-        for phoneNumber_data in phoneNumbers_data:
-            PhoneNumber.objects.create(person = newPerson, **phoneNumber_data)
-        
-        for email_data in emails_data:
-            Email.objects.create(person = newPerson, **email_data)
-        
-        return newPerson    
 
