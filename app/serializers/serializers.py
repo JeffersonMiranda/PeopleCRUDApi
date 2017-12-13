@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from rest_framework.relations import PrimaryKeyRelatedField
 from app.models.Address import Address
 from app.models.Email import Email
 from app.models.PhoneNumber import PhoneNumber
