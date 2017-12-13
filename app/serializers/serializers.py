@@ -17,6 +17,12 @@ class PhoneNumberSerializer(serializers.ModelSerializer):
         model = PhoneNumber
         fields = '__all__'
 
+class EmailSerializer(serializers.ModelSerializer):
+        
+    class Meta:
+        model = Email
+        fields = '__all__'
+
 
 class PersonSerializer(serializers.ModelSerializer):
   
