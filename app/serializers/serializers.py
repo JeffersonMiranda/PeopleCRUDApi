@@ -25,6 +25,9 @@ class EmailSerializer(serializers.ModelSerializer):
         model = Email
         fields = '__all__'
 
+    def create(self, validated_data):
+        pass
+
 class PersonSerializer(serializers.ModelSerializer):
     
     addresses = AddressSerializer(many=True)
@@ -36,7 +39,7 @@ class PersonSerializer(serializers.ModelSerializer):
         fields = ('firstName','lastName','birthday','addresses','phoneNumbers','emails')
 
 
-    def create(self, validated_data):
+    def create(self, validated_data): ## CREATING PERSONS WITH ADDRESSES, PHONE NUMBERS AND EMAILS 
         addresses_data = validated_data.pop('addresses')
         phoneNumbers_data = validated_data.pop('phoneNumbers')
         emails_data = validated_data.pop('emails')

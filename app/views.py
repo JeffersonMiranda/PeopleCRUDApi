@@ -9,15 +9,12 @@ from app.serializers import serializers
 from app.models.PhoneNumber import PhoneNumber
 from app.models.Person import Person
 from rest_framework import viewsets
-from datetime import datetime
 
 class PersonView(viewsets.ModelViewSet):
 
     queryset = Person.objects.all()
     serializer_class = serializers.PersonSerializer
-
-    
-    
+        
 class AddressView(viewsets.ModelViewSet):
 
     queryset = Address.objects.all()
