@@ -9,22 +9,22 @@ class AddressSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Address
-        fields = ('id','street','postalCode','city','state')
-        extra_kwargs = {'id': {'read_only': False}}
+        fields = '__all__'
+        extra_kwargs = {'id': {'read_only': False,'required':False}}
 
 class PhoneNumberSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PhoneNumber
         fields = '__all__'
-        extra_kwargs = {'id': {'read_only': False}}
+        extra_kwargs = {'id': {'read_only': False,'required':False}}
 
 class EmailSerializer(serializers.ModelSerializer):
         
     class Meta:
         model = Email
         fields = '__all__'
-        extra_kwargs = {'id': {'read_only': False}}
+        extra_kwargs = {'id': {'read_only': False,'required':False}}
 
 class PersonSerializer(serializers.ModelSerializer):
 
@@ -87,7 +87,7 @@ class PersonSerializer(serializers.ModelSerializer):
                     phoneNumberItem.save()
                 else:  ## IF ADDRESS DOES NOT EXIST SO CREATE NEW ONE
                     PhoneNumber.objects.create(person_id = instance.id, **phoneNumber)
-
+        
         if emails_data:
             for email in emails_data:
                 email_id = email.get('id',None)
