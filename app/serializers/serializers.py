@@ -65,6 +65,8 @@ class PersonSerializer(serializers.ModelSerializer):
         phoneNumbers_data = validated_data.get('phoneNumbers')
         emails_data = validated_data.get('emails')
 
+
+
         if addresses_data:
             for address in addresses_data:
                 address_id = address.get('id',None)                
@@ -97,6 +99,17 @@ class PersonSerializer(serializers.ModelSerializer):
                     emailItem.save()
                 else:  ## IF ADDRESS DOES NOT EXIST SO CREATE NEW ONE
                     Email.objects.create(person_id = instance.id, **email)
+
+        emails_db_keys = Email.objects.filter(person_id = instance.id).values_list('id', flat=True) ## EMAILS FROM DATABASE        
+        emails_keys = list(map(lambda x: x['id'], emails_data))    ## EMAILS FROM REQUEST 
+
+        if emails_keys:
+            for key in emails_db_keys:
+                if key not in emails_keys:
+                    Email.objects.filter(id=key).delete()
+        else:
+            Email.objects.all().delete()
+       
 
         return instance
 
