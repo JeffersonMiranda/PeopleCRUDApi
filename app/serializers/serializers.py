@@ -72,7 +72,8 @@ class PersonSerializer(serializers.ModelSerializer):
                     addressItem.state = address.get('state',addressItem.state)
                     addressItem.save()
                 else:  ## IF ADDRESS DOES NOT EXIST SO CREATE NEW ONE
-                    Address.objects.create()
+                    print(instance)
+                    Address.objects.create(person_id = instance.id, **address)
         
         if phoneNumbers_data:
             for phoneNumber in phoneNumbers_data:
@@ -82,7 +83,7 @@ class PersonSerializer(serializers.ModelSerializer):
                     phoneNumberItem.number = phoneNumber.get('phone', phoneNumberItem.number)
                     phoneNumberItem.save()
                 else:  ## IF ADDRESS DOES NOT EXIST SO CREATE NEW ONE
-                    PhoneNumber.objects.create()
+                    PhoneNumber.objects.create(person_id = instance.id, **phoneNumber)
 
         if emails_data:
             for email in emails_data:
@@ -92,7 +93,7 @@ class PersonSerializer(serializers.ModelSerializer):
                     emailItem.description = email.get('description', emailItem.description)
                     emailItem.save()
                 else:  ## IF ADDRESS DOES NOT EXIST SO CREATE NEW ONE
-                    Email.objects.create()
+                    Email.objects.create(person_id = instance.id, **email)
 
         return instance
 
