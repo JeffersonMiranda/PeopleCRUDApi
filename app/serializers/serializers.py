@@ -109,7 +109,18 @@ class PersonSerializer(serializers.ModelSerializer):
                     Email.objects.filter(id=key).delete()
         else:
             Email.objects.filter(person_id = instance.id).all().delete()
+
        
+        phone_db_keys = PhoneNumber.objects.filter(person_id = instance.id).values_list('id',flat = True)  ## PHONE NUMBERS FROM DATABASE
+        phone_keys = list(map(lambda x: x['id'], phoneNumbers_data)) ## PHONE NUMBERS FROM REQUEST
+
+        if phone_keys:
+            for key in phone_db_keys:
+                if key not in phone_keys:
+                    PhoneNumber.objects.filter(id=key).delete()
+        else:
+            PhoneNumber.objects.filter(person_id = instance.id).all().delete()
+
 
         return instance
 
