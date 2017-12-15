@@ -9,19 +9,22 @@ class AddressSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Address
-        fields = '__all__'
+        fields = ('id','street','postalCode','city','state')
+        extra_kwargs = {'id': {'read_only': False}}
 
 class PhoneNumberSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PhoneNumber
         fields = '__all__'
+        extra_kwargs = {'id': {'read_only': False}}
 
 class EmailSerializer(serializers.ModelSerializer):
         
     class Meta:
         model = Email
         fields = '__all__'
+        extra_kwargs = {'id': {'read_only': False}}
 
 class PersonSerializer(serializers.ModelSerializer):
 
@@ -32,6 +35,7 @@ class PersonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Person
         fields = ('id','firstName','lastName','birthday','addresses','phoneNumbers','emails')
+        extra_kwargs = {'id': {'read_only': False}}
 
     def create(self, validated_data):
         addresses_data = validated_data.pop('addresses')
@@ -63,7 +67,7 @@ class PersonSerializer(serializers.ModelSerializer):
 
         if addresses_data:
             for address in addresses_data:
-                address_id = address.get('id',None)
+                address_id = address.get('id',None)                
                 if address_id:  ## MODIFY ADDRESS IF IT EXISTS
                     addressItem = Address.objects.get(id=address_id, person = instance)
                     addressItem.street = address.get('street', addressItem.street)
@@ -71,8 +75,7 @@ class PersonSerializer(serializers.ModelSerializer):
                     addressItem.city = address.get('city',addressItem.city)
                     addressItem.state = address.get('state',addressItem.state)
                     addressItem.save()
-                else:  ## IF ADDRESS DOES NOT EXIST SO CREATE NEW ONE
-                    print(instance)
+                else:  ## IF ADDRESS DOES NOT EXIST SO CREATE NEW ONE                   
                     Address.objects.create(person_id = instance.id, **address)
         
         if phoneNumbers_data:
@@ -80,7 +83,7 @@ class PersonSerializer(serializers.ModelSerializer):
                 phoneNumber_id = phoneNumber.get('id',None)
                 if phoneNumber_id:  ## MODIFY PHONE NUMBER IF IT EXISTS
                     phoneNumberItem = PhoneNumber.objects.get(id=phoneNumber_id, person = instance)
-                    phoneNumberItem.number = phoneNumber.get('phone', phoneNumberItem.number)
+                    phoneNumberItem.number = phoneNumber.get('number', phoneNumberItem.number)
                     phoneNumberItem.save()
                 else:  ## IF ADDRESS DOES NOT EXIST SO CREATE NEW ONE
                     PhoneNumber.objects.create(person_id = instance.id, **phoneNumber)
@@ -89,7 +92,7 @@ class PersonSerializer(serializers.ModelSerializer):
             for email in emails_data:
                 email_id = email.get('id',None)
                 if email_id:  ## MODIFY ADDRESS IF IT EXISTS
-                    emailItem = Email.objects.get(id=emails_data, person = instance)
+                    emailItem = Email.objects.get(id=email_id, person = instance)
                     emailItem.description = email.get('description', emailItem.description)
                     emailItem.save()
                 else:  ## IF ADDRESS DOES NOT EXIST SO CREATE NEW ONE
