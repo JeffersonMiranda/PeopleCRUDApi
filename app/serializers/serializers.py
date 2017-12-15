@@ -101,7 +101,7 @@ class PersonSerializer(serializers.ModelSerializer):
                     Email.objects.create(person_id = instance.id, **email)
 
         emails_db_keys = Email.objects.filter(person_id = instance.id).values_list('id', flat=True) ## EMAILS FROM DATABASE        
-        emails_keys = list(map(lambda x: x['id'], emails_data))    ## EMAILS FROM REQUEST 
+        emails_keys = list(map(lambda x: x['id'] if x['id'] != None else None, emails_data))    ## EMAILS FROM REQUEST 
 
         if emails_keys:
             for key in emails_db_keys:
