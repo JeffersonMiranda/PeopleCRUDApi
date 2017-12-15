@@ -65,8 +65,41 @@ class PersonSerializer(serializers.ModelSerializer):
         phoneNumbers_data = validated_data.get('phoneNumbers')
         emails_data = validated_data.get('emails')
 
+        ## DELETING OBJECTS
+        emails_db_keys = Email.objects.filter(person_id = instance.id).values_list('id', flat=True) ## EMAILS FROM DATABASE        
+        emails_keys = list(map(lambda x: x['id'] if hasattr(x,'id') else None, emails_data))    ## EMAILS FROM REQUEST 
+
+        if emails_keys:
+            for key in emails_db_keys:
+                if key not in emails_keys:
+                    Email.objects.filter(id=key).delete()
+        else:
+            Email.objects.filter(person_id = instance.id).all().delete()
+
+       
+        phone_db_keys = PhoneNumber.objects.filter(person_id = instance.id).values_list('id',flat = True)  ## PHONE NUMBERS FROM DATABASE
+        phone_keys = list(map(lambda x: x['id'] if hasattr(x,'id') else None, phoneNumbers_data)) ## PHONE NUMBERS FROM REQUEST
+
+        if phone_keys:
+            for key in phone_db_keys:
+                if key not in phone_keys:
+                    PhoneNumber.objects.filter(id=key).delete()
+        else:
+            PhoneNumber.objects.filter(person_id = instance.id).all().delete()
+
+        address_db_keys = Address.objects.filter(person_id = instance.id).values_list('id',flat = True)  ## ADDRESSES FROM DATABASE
+        address_keys = list(map(lambda x: x['id'] if hasattr(x,'id') else None, addresses_data)) ## ADDRESSES FROM REQUEST
+
+        if address_keys:
+            for key in address_db_keys:
+                if key not in address_keys:
+                    Address.objects.filter(id=key).delete()
+        else:
+            Address.objects.filter(person_id = instance.id).all().delete()
 
 
+
+        ## UPDATING OBJECTS    
         if addresses_data:
             for address in addresses_data:
                 address_id = address.get('id',None)                
@@ -100,26 +133,7 @@ class PersonSerializer(serializers.ModelSerializer):
                 else:  ## IF ADDRESS DOES NOT EXIST SO CREATE NEW ONE
                     Email.objects.create(person_id = instance.id, **email)
 
-        emails_db_keys = Email.objects.filter(person_id = instance.id).values_list('id', flat=True) ## EMAILS FROM DATABASE        
-        emails_keys = list(map(lambda x: x['id'] if x['id'] != None else None, emails_data))    ## EMAILS FROM REQUEST 
-
-        if emails_keys:
-            for key in emails_db_keys:
-                if key not in emails_keys:
-                    Email.objects.filter(id=key).delete()
-        else:
-            Email.objects.filter(person_id = instance.id).all().delete()
-
-       
-        phone_db_keys = PhoneNumber.objects.filter(person_id = instance.id).values_list('id',flat = True)  ## PHONE NUMBERS FROM DATABASE
-        phone_keys = list(map(lambda x: x['id'], phoneNumbers_data)) ## PHONE NUMBERS FROM REQUEST
-
-        if phone_keys:
-            for key in phone_db_keys:
-                if key not in phone_keys:
-                    PhoneNumber.objects.filter(id=key).delete()
-        else:
-            PhoneNumber.objects.filter(person_id = instance.id).all().delete()
+     
 
 
         return instance
