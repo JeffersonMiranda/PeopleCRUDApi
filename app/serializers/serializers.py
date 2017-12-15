@@ -108,7 +108,7 @@ class PersonSerializer(serializers.ModelSerializer):
                 if key not in emails_keys:
                     Email.objects.filter(id=key).delete()
         else:
-            Email.objects.all().delete()
+            Email.objects.filter(person_id = instance.id).all().delete()
        
 
         return instance
