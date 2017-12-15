@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django_filters.rest_framework.backends import DjangoFilterBackend
 from rest_framework import status
 from rest_framework.response import Response
 from django.db import transaction
@@ -14,6 +15,8 @@ class PersonView(viewsets.ModelViewSet):
 
     queryset = Person.objects.all()
     serializer_class = serializers.PersonSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = ('id','firstName','lastName','birthday',)
         
 class AddressView(viewsets.ModelViewSet):
 

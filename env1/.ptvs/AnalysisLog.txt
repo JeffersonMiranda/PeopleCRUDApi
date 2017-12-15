@@ -3842,3 +3842,38 @@ C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\Extens
 2017-12-13T19:36:57: Deleting 2 files
 2017-12-13T19:36:57: Deleting "C:\Users\miran\Documents\Visual Studio 2017\Projects\ServiceFusionTest\PeopleApi\env1\.ptvs\_dummy_threading.idb"
 2017-12-13T19:36:57: Deleting "C:\Users\miran\Documents\Visual Studio 2017\Projects\ServiceFusionTest\PeopleApi\env1\.ptvs\_dummy__threading_local.idb"
+
+2017-12-14T23:26:52: Start analysis
+2017-12-14T23:26:53: IncludeModulesFromModulePath = win32com
+2017-12-14T23:26:59: Including c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env1\lib\site-packages\django_filters because django_filters.compat needs updating
+2017-12-14T23:26:59: Deleting 0 files
+2017-12-14T23:26:59: astropy.CallDepth = 0
+2017-12-14T23:26:59: delphixpy.CallDepth = 0
+2017-12-14T23:26:59: matplotlib.CallDepth = 3
+2017-12-14T23:26:59: pandas.CallDepth = 0
+2017-12-14T23:26:59: sympy.CallDepth = 0
+2017-12-14T23:26:59: Start group "c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env1\lib\site-packages\django_filters" with 16 files
+2017-12-14T23:27:01: Parsing complete
+2017-12-14T23:27:01: Analyzing "django_filters.compat" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env1\lib\site-packages\django_filters\compat.py")
+2017-12-14T23:27:01: Analyzing "django_filters.conf" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env1\lib\site-packages\django_filters\conf.py")
+2017-12-14T23:27:01: Analyzing "django_filters.constants" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env1\lib\site-packages\django_filters\constants.py")
+2017-12-14T23:27:01: Analyzing "django_filters.exceptions" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env1\lib\site-packages\django_filters\exceptions.py")
+2017-12-14T23:27:01: Analyzing "django_filters.fields" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env1\lib\site-packages\django_filters\fields.py")
+2017-12-14T23:27:01: Analyzing "django_filters.filters" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env1\lib\site-packages\django_filters\filters.py")
+2017-12-14T23:27:01: Analyzing "django_filters.filterset" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env1\lib\site-packages\django_filters\filterset.py")
+2017-12-14T23:27:01: Analyzing "django_filters.models" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env1\lib\site-packages\django_filters\models.py")
+2017-12-14T23:27:01: Analyzing "django_filters.utils" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env1\lib\site-packages\django_filters\utils.py")
+2017-12-14T23:27:01: Analyzing "django_filters.views" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env1\lib\site-packages\django_filters\views.py")
+2017-12-14T23:27:01: Analyzing "django_filters.widgets" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env1\lib\site-packages\django_filters\widgets.py")
+2017-12-14T23:27:01: Analyzing "django_filters" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env1\lib\site-packages\django_filters\__init__.py")
+2017-12-14T23:27:01: Analyzing "django_filters.rest_framework.backends" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env1\lib\site-packages\django_filters\rest_framework\backends.py")
+2017-12-14T23:27:01: Analyzing "django_filters.rest_framework.filters" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env1\lib\site-packages\django_filters\rest_framework\filters.py")
+2017-12-14T23:27:01: Analyzing "django_filters.rest_framework.filterset" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env1\lib\site-packages\django_filters\rest_framework\filterset.py")
+2017-12-14T23:27:01: Analyzing "django_filters.rest_framework" ("c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env1\lib\site-packages\django_filters\rest_framework\__init__.py")
+2017-12-14T23:27:01: Starting analysis of 16 modules
+2017-12-14T23:27:05: Analysis complete
+2017-12-14T23:27:05: Saving group "c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env1\lib\site-packages\django_filters"
+2017-12-14T23:27:07: [ERROR] django_filters.widgets.BaseCSVWidget.BaseCSVWidget: Unknown has no name
+2017-12-14T23:27:07: [ERROR] django_filters.widgets.LinkWidget.LinkWidget: Unknown has no name
+2017-12-14T23:27:07: End of group "c:\users\miran\documents\visual studio 2017\projects\servicefusiontest\peopleapi\env1\lib\site-packages\django_filters"
+2017-12-14T23:27:17: Deleting 0 files
