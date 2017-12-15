@@ -73,6 +73,26 @@ class PersonSerializer(serializers.ModelSerializer):
                     addressItem.save()
                 else:  ## IF ADDRESS DOES NOT EXIST SO CREATE NEW ONE
                     Address.objects.create()
+        
+        if phoneNumbers_data:
+            for phoneNumber in phoneNumbers_data:
+                phoneNumber_id = phoneNumber.get('id',None)
+                if phoneNumber_id:  ## MODIFY PHONE NUMBER IF IT EXISTS
+                    phoneNumberItem = PhoneNumber.objects.get(id=phoneNumber_id, person = instance)
+                    phoneNumberItem.number = phoneNumber.get('phone', phoneNumberItem.number)
+                    phoneNumberItem.save()
+                else:  ## IF ADDRESS DOES NOT EXIST SO CREATE NEW ONE
+                    PhoneNumber.objects.create()
+
+        if emails_data:
+            for email in emails_data:
+                email_id = email.get('id',None)
+                if email_id:  ## MODIFY ADDRESS IF IT EXISTS
+                    emailItem = Email.objects.get(id=emails_data, person = instance)
+                    emailItem.description = email.get('description', emailItem.description)
+                    emailItem.save()
+                else:  ## IF ADDRESS DOES NOT EXIST SO CREATE NEW ONE
+                    Email.objects.create()
 
         return instance
 
