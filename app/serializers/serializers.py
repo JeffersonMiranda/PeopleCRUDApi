@@ -67,7 +67,7 @@ class PersonSerializer(serializers.ModelSerializer):
 
         ## DELETING OBJECTS
         emails_db_keys = Email.objects.filter(person_id = instance.id).values_list('id', flat=True) ## EMAILS FROM DATABASE        
-        emails_keys = list(map(lambda x: x['id'] if hasattr(x,'id') else None, emails_data))    ## EMAILS FROM REQUEST 
+        emails_keys = list(map(lambda x: x.get('id'), emails_data))    ## EMAILS FROM REQUEST 
 
         if emails_keys:
             for key in emails_db_keys:
@@ -78,7 +78,7 @@ class PersonSerializer(serializers.ModelSerializer):
 
        
         phone_db_keys = PhoneNumber.objects.filter(person_id = instance.id).values_list('id',flat = True)  ## PHONE NUMBERS FROM DATABASE
-        phone_keys = list(map(lambda x: x['id'] if hasattr(x,'id') else None, phoneNumbers_data)) ## PHONE NUMBERS FROM REQUEST
+        phone_keys = list(map(lambda x: x.get('id'), phoneNumbers_data)) ## PHONE NUMBERS FROM REQUEST
 
         if phone_keys:
             for key in phone_db_keys:
@@ -87,8 +87,9 @@ class PersonSerializer(serializers.ModelSerializer):
         else:
             PhoneNumber.objects.filter(person_id = instance.id).all().delete()
 
+
         address_db_keys = Address.objects.filter(person_id = instance.id).values_list('id',flat = True)  ## ADDRESSES FROM DATABASE
-        address_keys = list(map(lambda x: x['id'] if hasattr(x,'id') else None, addresses_data)) ## ADDRESSES FROM REQUEST
+        address_keys = list(map(lambda x: x.get('id'), addresses_data)) ## ADDRESSES FROM REQUEST
 
         if address_keys:
             for key in address_db_keys:
@@ -117,7 +118,7 @@ class PersonSerializer(serializers.ModelSerializer):
             for phoneNumber in phoneNumbers_data:
                 phoneNumber_id = phoneNumber.get('id',None)
                 if phoneNumber_id:  ## MODIFY PHONE NUMBER IF IT EXISTS
-                    phoneNumberItem = PhoneNumber.objects.get(id=phoneNumber_id, person = instance)
+                    phoneNumberItem = PhoneNumber.objects.get(id=phoneNumber_id, person_id = instance)
                     phoneNumberItem.number = phoneNumber.get('number', phoneNumberItem.number)
                     phoneNumberItem.save()
                 else:  ## IF ADDRESS DOES NOT EXIST SO CREATE NEW ONE
@@ -131,9 +132,7 @@ class PersonSerializer(serializers.ModelSerializer):
                     emailItem.description = email.get('description', emailItem.description)
                     emailItem.save()
                 else:  ## IF ADDRESS DOES NOT EXIST SO CREATE NEW ONE
-                    Email.objects.create(person_id = instance.id, **email)
-
-     
+                    Email.objects.create(person_id = instance.id, **email)     
 
 
         return instance
