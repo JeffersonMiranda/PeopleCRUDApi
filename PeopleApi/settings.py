@@ -23,12 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '847a7b33-17f0-4733-8efd-583c0dac1bbd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['fast-escarpment-66590.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['peoplecrudapi.herokuapp.com']
 
 CORS_ORIGIN_WHITELIST  = (
-    'localhost:8080'
+    'personscrudapi.herokuapp.com'
     )
 
 # Application definition
