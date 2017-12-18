@@ -28,7 +28,8 @@ DEBUG = False
 ALLOWED_HOSTS = ['personscrudapi.herokuapp.com']
 
 CORS_ORIGIN_WHITELIST  = (
-    'peoplecrud.herokuapp.com'
+    'peoplecrud.herokuapp.com',
+    'localhost'
     )
 
 # Application definition
