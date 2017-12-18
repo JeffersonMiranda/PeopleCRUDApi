@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ['personscrudapi.herokuapp.com']
 
 CORS_ORIGIN_WHITELIST  = (
     'peoplecrud.herokuapp.com',
-    'localhost'
+    'localhost:8080'
     )
 
 # Application definition
