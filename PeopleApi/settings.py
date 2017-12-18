@@ -25,10 +25,10 @@ SECRET_KEY = '847a7b33-17f0-4733-8efd-583c0dac1bbd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['peoplecrudapi.herokuapp.com']
+ALLOWED_HOSTS = ['personscrudapi.herokuapp.com']
 
 CORS_ORIGIN_WHITELIST  = (
-    'personscrud.herokuapp.com'
+    'peoplecrud.herokuapp.com'
     )
 
 # Application definition
